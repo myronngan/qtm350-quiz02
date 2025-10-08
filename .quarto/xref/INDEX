@@ -1,0 +1,23 @@
+{
+  "about.qmd": {
+    "about.html": "24b47ae3"
+  },
+  "country.qmd": {
+    "country.html": "e73f2134"
+  },
+  "index.qmd": {
+    "index.html": "740bc9d8"
+  },
+  "life-gpd.qmd": {
+    "life-gpd.html": "f83b49f8"
+  },
+  "life-population.qmd": {
+    "life-population.html": "ad4e88f9"
+  },
+  "qtm350-quiz02/create-dataset.ipynb": {
+    "create-dataset.html": "bcc8d236"
+  },
+  "create-dataset.ipynb": {
+    "create-dataset.html": "52ca071b"
+  }
+}
