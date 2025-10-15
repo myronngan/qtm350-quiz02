@@ -1,0 +1,20 @@
+---
+title: "Life Expectancy and Population"
+---
+
+We examine how life expectancy varies with country population (population on a log scale).
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+gm = pd.read_csv("gapminder.csv")
+
+plt.figure(figsize=(8,5))
+plt.scatter(gm["population_millions"], gm["life_expectancy"], alpha=0.5)
+plt.xscale("log")
+plt.xlabel("Population (millions, log scale)")
+plt.ylabel("Life Expectancy (years)")
+plt.title("Life Expectancy vs Population (1952–2007)")
+plt.tight_layout()
+plt.show()
