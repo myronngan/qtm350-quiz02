@@ -1,0 +1,51 @@
+---
+title: "Country Analysis"
+params:
+  country: "United States"
+---
+
+Analyze life expectancy, GDP per capita, and population over time for a specific country.  
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+gm = pd.read_csv("gapminder.csv")
+
+# Get YAML param via Quarto shortcode (works in Python):
+c = "{{< meta params.country >}}"
+
+# Fallback if you run this cell outside Quarto (so it prints literally):
+if c.startswith("{{"):
+    c = "United States"
+
+country = c
+
+dat = gm[gm["country"] == country].sort_values("year")
+if dat.empty:
+    raise ValueError(f"No rows found for country: {country}")
+
+# Life Expectancy over time
+plt.figure(figsize=(8,4))
+plt.plot(dat["year"], dat["life_expectancy"])
+plt.xlabel("Year"); plt.ylabel("Life Expectancy (years)")
+plt.title(f"Life Expectancy Over Time — {country}")
+plt.tight_layout()
+plt.show()
+
+# GDP per Capita over time (log)
+plt.figure(figsize=(8,4))
+plt.plot(dat["year"], dat["gdp_per_capita"])
+plt.yscale("log")
+plt.xlabel("Year"); plt.ylabel("GDP per Capita (log scale)")
+plt.title(f"GDP per Capita Over Time — {country}")
+plt.tight_layout()
+plt.show()
+
+# Population over time
+plt.figure(figsize=(8,4))
+plt.plot(dat["year"], dat["population_millions"])
+plt.xlabel("Year"); plt.ylabel("Population (millions)")
+plt.title(f"Population Over Time — {country}")
+plt.tight_layout()
+plt.show()
+```
